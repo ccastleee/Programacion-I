@@ -35,8 +35,6 @@ def mostrarMaximo():
             encontrado = True
     if encontrado == False:
         print("No hay un maximo!")
-    
-            
-        
+
 devolverMayor(2,2,2)
 mostrarMaximo() 
