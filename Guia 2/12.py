@@ -8,7 +8,7 @@ ingresos. Mostrar los registros de entrada al club antes y después de
 eliminarlo. Informar cuántos ingresos se eliminaron."""
 
 def verificarSocio(x):
-    return len(x) == 5
+    return len(x) == 5 and x.isdigit()
 
 def registroSocios(listaI):
     while True:

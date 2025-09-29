@@ -20,4 +20,3 @@ def ordenarLista(lista):
 
 ordenarLista(lista_1)
 print(lista_1)
-
