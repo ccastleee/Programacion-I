@@ -54,7 +54,7 @@ def intercambiarFila(a, b, matriz):
     #matriz[a-1] = matriz[b-1]
     #matriz[b-1] = aux
     rangoFilas = len(matriz)
-    matrizFila = matriz.copy() # en este caso no modifico la original, ya que hago un reemplazo de filas!
+    matrizFila = matriz.copy() # en este caso no modifico la original, ya que hago un reemplazo de filas
     while True:
         if validarPositivos(a,b) and a <= rangoFilas and b <= rangoFilas:
             break
@@ -64,7 +64,7 @@ def intercambiarFila(a, b, matriz):
     return matrizFila
 
 def intercambiarColumnas(col1, col2, matriz):
-    matrizColumna = [fila[:] for fila in matriz] # en este caso tengo que hacer una copia profunda, ya que sino modifico la original!
+    matrizColumna = [fila[:] for fila in matriz] # en este caso tengo que hacer una copia profunda, ya que sino modifico la original
     for i in range(len(matriz)):
         matrizColumna[i][col1-1], matrizColumna[i][col2-1] = matrizColumna[i][col2-1], matrizColumna[i][col1-1]
     return matrizColumna

@@ -59,7 +59,7 @@ def sumarDias():
     fechaSplit[0] = str(fechaNueva)
     fechasLista[opcion-1] = ('/').join(fechaSplit)
     fechasNuevo = tuple(fechasLista)
-    print(fechasNuevo)
+    return fechasNuevo[opcion-1]
 
 def verificarHorario():
     horario = input("Ingrese el horario: ")
@@ -71,14 +71,48 @@ def verificarHorario():
     else:
         print("Horario valido.")
 
+def elegirHorarioDeLista():
+    print("Elija un horario:")
+    for i, (hh, mm) in enumerate(horarios, start=1):
+        print(f"{i} - {hh:02d}:{mm:02d}")
+    while True:
+        try:
+            op = int(input("Opción: "))
+            if 1 <= op <= len(horarios):
+                return horarios[op-1]
+            print("Opción fuera de rango.")
+        except ValueError:
+            print("Ingrese un número entero.")
+
 def diferenciaHorarios(h1, h2):
-    dif = h2 - h1
-    if not 0>=h1<=24 or 0>=h2<=24:
-        raise ValueError("Error, fuera de rango.")
-    elif h1 > h2:
-        
 
+    h1Total = h1[0]*60 + h1[1]
+    h2Total = h2[0]*60 + h2[1]
 
-verificarFechaHorario()
-sumarDias()
-verificarHorario()
+    if h1Total > h2Total:
+        h2Total += 24*60
+
+    diff = h2Total - h1Total
+    return (diff // 60, diff % 60)
+
+def main():
+    global fechas
+
+    print("\n(a) Ingresar una fecha y verificar:")
+    verificarFechaHorario()  
+
+    print("\n(b) Sumar N días a una fecha:")
+    fechas = sumarDias()  
+    print(f"Fecha actualizada: {fechas}")
+
+    print("\n(c) Ingresar/Elegir horarios válidos y (d) calcular diferencia:")
+    print("Horario 1:")
+    h1 = elegirHorarioDeLista()   
+    print("Horario 2:")
+    h2 = elegirHorarioDeLista()
+
+    dh, dm = diferenciaHorarios(h1, h2)
+
+    print(f"Diferencia: {str(dh).zfill(2)}:{str(dm).zfill(2)}")
+
+main()
